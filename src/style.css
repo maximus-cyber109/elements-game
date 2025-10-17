@@ -44,6 +44,283 @@
     /* Transitions */
     --transition: cubic-bezier(0.4, 0, 0.2, 1);
 }
+/* ===================================
+   EMAIL MODAL
+   =================================== */
+.email-modal {
+    padding: 48px 32px;
+    max-width: 500px;
+}
+
+.email-form {
+    margin-top: 32px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.email-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius);
+    padding: 16px 50px 16px 20px;
+    font-size: 16px;
+    color: var(--white);
+    font-family: inherit;
+    transition: all 0.3s var(--transition);
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.email-input::placeholder {
+    color: var(--gray-500);
+}
+
+.input-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-400);
+    pointer-events: none;
+}
+
+.input-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 14px;
+    margin-bottom: 20px;
+    min-height: 20px;
+}
+
+.verify-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border: none;
+    border-radius: 50px;
+    padding: 16px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s var(--transition);
+}
+
+.verify-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.verify-btn .btn-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.verify-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ===================================
+   ALREADY PLAYED MODAL
+   =================================== */
+.already-played-modal {
+    padding: 48px 32px;
+    text-align: center;
+}
+
+.info-icon-large {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--warning), var(--error));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-icon-large svg {
+    width: 48px;
+    height: 48px;
+    color: white;
+}
+
+.reward-reminder {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin: 32px 0;
+}
+
+.reward-reminder h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--white);
+}
+
+.reminder-text {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--gray-400);
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* ===================================
+   INSTRUCTIONS CARD
+   =================================== */
+.instructions-card {
+    padding: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.instruction-item {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.instruction-number {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+}
+
+.instruction-item p {
+    font-size: 14px;
+    color: var(--gray-300);
+    line-height: 1.4;
+}
+
+/* ===================================
+   CLICK-TO-SELECT STEPS
+   =================================== */
+.steps-pool-click {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.step-item-click {
+    position: relative;
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: all 0.3s var(--transition);
+    user-select: none;
+}
+
+.step-item-click::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: var(--radius) 0 0 var(--radius);
+    opacity: 0;
+    transition: opacity 0.3s var(--transition);
+}
+
+.step-item-click:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary);
+    transform: translateX(4px);
+}
+
+.step-item-click.selected {
+    background: rgba(0, 168, 232, 0.15);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 168, 232, 0.1);
+}
+
+.step-item-click.selected::before {
+    opacity: 1;
+}
+
+.step-selection-number {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    color: var(--gray-500);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    flex-shrink: 0;
+    transition: all 0.3s var(--transition);
+}
+
+.step-item-click.selected .step-selection-number {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-color: transparent;
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.step-item-click:hover .step-selection-number {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.step-text-click {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.5;
+}
+
+/* Mobile Responsiveness for Instructions */
+@media (max-width: 768px) {
+    .instructions-card {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .instruction-item {
+        min-width: 100%;
+    }
+}
 
 /* ===================================
    RESET & BASE
