@@ -4,7 +4,7 @@
 const GAME_DATA = {
     crown: {
         title: "Perfect Crown Prep Protocol",
-        description: "Arrange the crown preparation steps in correct clinical sequence",
+        description: "Click steps in the correct clinical sequence",
         steps: [
             { id: 1, text: "Tooth preparation and margin design", order: 1 },
             { id: 2, text: "Apply Elements Retract cord in sulcus", order: 2 },
@@ -16,25 +16,25 @@ const GAME_DATA = {
         ],
         reward: {
             product: 'Elements Retract Multidose Syringe',
-            discount: 'FREE Sample + 15% Off',
+            discount: 'FREEBIE + 15% Off',
             code: 'RETFREE15',
             image: 'https://email-editor-resources.s3.amazonaws.com/images/82618240/elements%20retract.png'
         },
-        tip: "Hemostatic retraction cords like Elements Retract control bleeding and fluid within 3-5 minutes, creating the ideal dry field for accurate impression capture."
+        tip: "Hemostatic retraction cords like Elements Retract control bleeding and fluid within 3-5 minutes, creating the ideal dry field for accurate impression capture. This ensures precise margin definition and high-quality final impressions."
     },
     
     cosmetic: {
         title: "Professional Whitening Workflow",
-        description: "Sequence the in-office whitening procedure for optimal results",
+        description: "Click steps in the correct sequence for optimal results",
         steps: [
             { id: 1, text: "Patient consultation and shade assessment", order: 1 },
-            { id: 2, text: "Polish teeth with pumice", order: 2 },
+            { id: 2, text: "Polish teeth with pumice to remove pellicle", order: 2 },
             { id: 3, text: "Apply liquid dam to protect gingiva", order: 3 },
-            { id: 4, text: "Apply Elements Whitening Gel", order: 4 },
+            { id: 4, text: "Apply Elements Whitening Gel to tooth surfaces", order: 4 },
             { id: 5, text: "Light activation for 15 minutes", order: 5 },
-            { id: 6, text: "Remove gel and assess improvement", order: 6 },
+            { id: 6, text: "Remove gel and assess shade improvement", order: 6 },
             { id: 7, text: "Repeat process 2-3 times if needed", order: 7 },
-            { id: 8, text: "Apply fluoride for sensitivity", order: 8 }
+            { id: 8, text: "Apply fluoride gel for sensitivity management", order: 8 }
         ],
         reward: {
             product: 'Elements Inoffice Whitening Kit',
@@ -42,47 +42,47 @@ const GAME_DATA = {
             code: 'BLEACH10',
             image: 'https://email-editor-resources.s3.amazonaws.com/images/82618240/elements%20bleaching%20kit.png'
         },
-        tip: "Professional whitening delivers 6-8 shades improvement in a single visit. Always finish with fluoride to reduce sensitivity by up to 60%."
+        tip: "Professional in-office whitening with high-concentration hydrogen peroxide delivers 6-8 shades improvement in a single visit. Always finish with fluoride application to reduce post-whitening sensitivity by up to 60% and strengthen enamel."
     },
     
     prevention: {
         title: "Topical Fluoride Application Protocol",
-        description: "Arrange fluoride application steps for maximum effectiveness",
+        description: "Click steps in the correct order for maximum effectiveness",
         steps: [
-            { id: 1, text: "Prophylaxis - scaling and polishing", order: 1 },
-            { id: 2, text: "Isolate and dry teeth thoroughly", order: 2 },
-            { id: 3, text: "Apply Elements Fluoride Gel in tray", order: 3 },
+            { id: 1, text: "Complete prophylaxis - scaling and polishing", order: 1 },
+            { id: 2, text: "Isolate and thoroughly dry teeth", order: 2 },
+            { id: 3, text: "Apply Elements Fluoride Gel in custom tray", order: 3 },
             { id: 4, text: "Keep tray in place for 4 minutes", order: 4 },
-            { id: 5, text: "Remove tray, patient expectorates", order: 5 },
-            { id: 6, text: "Instruct no eating for 30 minutes", order: 6 },
-            { id: 7, text: "Patient education on prevention", order: 7 }
+            { id: 5, text: "Remove tray, patient expectorates excess", order: 5 },
+            { id: 6, text: "Instruct no eating/drinking for 30 minutes", order: 6 },
+            { id: 7, text: "Patient education on caries prevention", order: 7 }
         ],
         reward: {
-            product: 'Elements Topical Fluoride Gel',
+            product: 'Elements Topical Fluoride Thixotropic Gel',
             discount: '10% Off',
             code: 'THIX10',
             image: 'https://email-editor-resources.s3.amazonaws.com/images/82618240/elements%20thixotropic%20gel.png'
         },
-        tip: "Thixotropic gels maintain high viscosity in trays but flow into interproximal spaces, providing superior penetration while minimizing swallowing."
+        tip: "Thixotropic fluoride gels maintain high viscosity in trays but flow into interproximal spaces under pressure, providing superior penetration compared to liquid fluoride. This maximizes enamel remineralization while minimizing patient swallowing and gastric upset."
     },
     
     general: {
         title: "Daily Clinic Schedule Challenge",
-        description: "Prioritize patient appointments for optimal workflow",
+        description: "Click appointments in optimal priority order",
         steps: [
-            { id: 1, text: "Emergency - Post-extraction bleeding", order: 1 },
-            { id: 2, text: "Pediatric fluoride application (15min)", order: 2 },
+            { id: 1, text: "Emergency - Post-extraction bleeding control", order: 1 },
+            { id: 2, text: "Quick pediatric fluoride application (15min)", order: 2 },
             { id: 3, text: "Crown prep with impression (60min)", order: 3 },
-            { id: 4, text: "Whitening consultation (30min)", order: 4 },
-            { id: 5, text: "Routine prophylaxis and fluoride", order: 5 }
+            { id: 4, text: "Cosmetic whitening consultation (30min)", order: 4 },
+            { id: 5, text: "Routine recall prophylaxis and fluoride", order: 5 }
         ],
         reward: {
             product: 'Elements Retract Multidose Syringe',
-            discount: 'FREE Sample + 15% Off',
+            discount: 'FREEBIE + 15% Off',
             code: 'RETFREE15',
             image: 'https://email-editor-resources.s3.amazonaws.com/images/82618240/elements%20retract.png'
         },
-        tip: "Smart scheduling prioritizes emergencies first, then quick procedures, followed by longer appointments. Elements products support diverse practice needs."
+        tip: "Smart clinic scheduling prioritizes emergencies first, followed by quick high-value procedures, then longer appointments. Elements products support diverse practice needs from hemostasis to aesthetics to prevention, streamlining your clinical workflow."
     }
 };
 
@@ -92,56 +92,151 @@ const GAME_DATA = {
 let gameState = {
     selectedSpecialty: null,
     currentSteps: [],
-    droppedSteps: [],
+    selectedSteps: [],
+    selectionOrder: [],
     startTime: null,
     timerInterval: null,
     userEmail: null,
-    draggedElement: null,
-    touchStartY: 0,
-    touchStartX: 0
+    customerId: null,
+    hasPlayed: false
 };
 
 // ===================================
 // INITIALIZATION
 // ===================================
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎮 Elements Mastery Game Initialized');
+    console.log('🎮 Elements Mastery Game - Click-to-Select Version');
     init();
 });
 
-function init() {
-    getUserEmail();
-    setupEventListeners();
+async function init() {
+    // Check if email exists in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const emailParam = urlParams.get('email');
     
-    // Hide loading screen
-    setTimeout(() => {
-        const loadingScreen = document.getElementById('loadingScreen');
-        if (loadingScreen) {
-            loadingScreen.classList.add('hidden');
-        }
-    }, 1500);
+    if (emailParam) {
+        console.log('✅ Email found in URL:', emailParam);
+        gameState.userEmail = emailParam;
+        await validateAndStart(emailParam);
+    } else {
+        console.log('⚠️ No email in URL - showing email modal');
+        setTimeout(() => {
+            hideLoadingScreen();
+            showEmailModal();
+        }, 1000);
+    }
+    
+    setupEventListeners();
 }
 
-function getUserEmail() {
-    const urlParams = new URLSearchParams(window.location.search);
-    gameState.userEmail = urlParams.get('email') || 'guest@pinkblue.in';
-    console.log('👤 User Email:', gameState.userEmail);
+function hideLoadingScreen() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    if (loadingScreen) {
+        loadingScreen.classList.add('hidden');
+    }
+}
+
+function showEmailModal() {
+    const emailModal = document.getElementById('emailModal');
+    if (emailModal) {
+        emailModal.classList.add('active');
+    }
+}
+
+// ===================================
+// EMAIL VALIDATION
+// ===================================
+async function validateAndStart(email) {
+    console.log('🔍 Validating email:', email);
+    
+    try {
+        // Check if already played
+        const checkResponse = await fetch('/api/check-game-played', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+        });
+        
+        const checkData = await checkResponse.json();
+        console.log('📊 Check response:', checkData);
+        
+        if (checkData.hasPlayed) {
+            console.log('⚠️ User already played');
+            showAlreadyPlayedModal(checkData.couponCode || 'RETFREE15');
+            hideLoadingScreen();
+            return;
+        }
+        
+        // Validate email with Magento
+        const validateResponse = await fetch('/api/validate-customer', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+        });
+        
+        const validateData = await validateResponse.json();
+        console.log('✅ Validation response:', validateData);
+        
+        if (validateData.isValid) {
+            gameState.customerId = validateData.customerId;
+            hideLoadingScreen();
+            showSpecialtyModal();
+        } else {
+            showEmailError('Email not found. Please use your registered PinkBlue Dental email.');
+            hideLoadingScreen();
+            showEmailModal();
+        }
+        
+    } catch (error) {
+        console.error('❌ Validation error:', error);
+        // Allow game to continue even if validation fails
+        hideLoadingScreen();
+        showSpecialtyModal();
+    }
+}
+
+function showAlreadyPlayedModal(couponCode) {
+    const modal = document.getElementById('alreadyPlayedModal');
+    const codeEl = document.getElementById('previousCouponCode');
+    
+    if (modal) modal.classList.add('active');
+    if (codeEl) codeEl.textContent = couponCode;
+}
+
+function showSpecialtyModal() {
+    const modal = document.getElementById('specialtyModal');
+    if (modal) modal.classList.add('active');
+}
+
+function showEmailError(message) {
+    const errorEl = document.getElementById('emailError');
+    if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.style.display = 'block';
+    }
 }
 
 // ===================================
 // EVENT LISTENERS
 // ===================================
 function setupEventListeners() {
-    console.log('🎯 Setting up event listeners...');
+    // Email verification
+    const verifyBtn = document.getElementById('verifyEmailBtn');
+    if (verifyBtn) {
+        verifyBtn.addEventListener('click', handleEmailVerification);
+    }
+    
+    const emailInput = document.getElementById('emailInput');
+    if (emailInput) {
+        emailInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleEmailVerification();
+        });
+    }
     
     // Specialty selection
-    const specialtyCards = document.querySelectorAll('.specialty-card');
-    console.log('📋 Found specialty cards:', specialtyCards.length);
-    
-    specialtyCards.forEach(card => {
+    document.querySelectorAll('.specialty-card').forEach(card => {
         card.addEventListener('click', (e) => {
             const specialty = e.currentTarget.dataset.specialty;
-            console.log('✅ Selected specialty:', specialty);
             selectSpecialty(specialty);
         });
     });
@@ -152,52 +247,73 @@ function setupEventListeners() {
         submitBtn.addEventListener('click', checkAnswer);
     }
     
-    // Play again
-    const playAgainBtn = document.getElementById('playAgainBtn');
-    if (playAgainBtn) {
-        playAgainBtn.addEventListener('click', resetGame);
-    }
-    
-    // Shop now
+    // Shop now buttons
     const shopNowBtn = document.getElementById('shopNowBtn');
     if (shopNowBtn) {
         shopNowBtn.addEventListener('click', shopNow);
     }
     
-    // Copy coupon code
+    const shopNowBtnAlready = document.getElementById('shopNowBtnAlready');
+    if (shopNowBtnAlready) {
+        shopNowBtnAlready.addEventListener('click', shopNow);
+    }
+    
+    // Copy coupon
     const copyBtn = document.getElementById('copyBtn');
     if (copyBtn) {
         copyBtn.addEventListener('click', copyCouponCode);
     }
 }
 
+async function handleEmailVerification() {
+    const emailInput = document.getElementById('emailInput');
+    const verifyBtn = document.getElementById('verifyEmailBtn');
+    
+    if (!emailInput) return;
+    
+    const email = emailInput.value.trim();
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+        showEmailError('Please enter a valid email address');
+        return;
+    }
+    
+    // Show loading state
+    if (verifyBtn) {
+        verifyBtn.disabled = true;
+        verifyBtn.querySelector('.btn-content span').textContent = 'Verifying...';
+    }
+    
+    gameState.userEmail = email;
+    
+    // Hide email modal
+    const emailModal = document.getElementById('emailModal');
+    if (emailModal) emailModal.classList.remove('active');
+    
+    // Show loading screen
+    const loadingScreen = document.getElementById('loadingScreen');
+    if (loadingScreen) loadingScreen.classList.remove('hidden');
+    
+    // Validate
+    await validateAndStart(email);
+}
+
 // ===================================
 // SPECIALTY SELECTION
 // ===================================
 function selectSpecialty(specialty) {
-    console.log('🎯 Selecting specialty:', specialty);
+    console.log('🎯 Selected specialty:', specialty);
     gameState.selectedSpecialty = specialty;
     
-    // Hide modal
-    const modal = document.getElementById('specialtyModal');
+    const specialtyModal = document.getElementById('specialtyModal');
     const mainContainer = document.getElementById('mainContainer');
     const specialtyBadge = document.getElementById('specialtyBadge');
     
-    console.log('🔍 Elements found:', {
-        modal: !!modal,
-        mainContainer: !!mainContainer,
-        specialtyBadge: !!specialtyBadge
-    });
+    if (specialtyModal) specialtyModal.classList.remove('active');
+    if (mainContainer) mainContainer.classList.remove('hidden');
     
-    if (modal) {
-        modal.classList.remove('active');
-    }
-    
-    if (mainContainer) {
-        mainContainer.classList.remove('hidden');
-    }
-    
-    // Update badge
     const badges = {
         crown: 'Crown & Bridge Expert',
         cosmetic: 'Smile Designer',
@@ -205,11 +321,8 @@ function selectSpecialty(specialty) {
         general: 'All-Rounder'
     };
     
-    if (specialtyBadge) {
-        specialtyBadge.textContent = badges[specialty];
-    }
+    if (specialtyBadge) specialtyBadge.textContent = badges[specialty];
     
-    // Load game
     loadGame(specialty);
 }
 
@@ -221,7 +334,7 @@ function loadGame(specialty) {
     const gameData = GAME_DATA[specialty];
     
     if (!gameData) {
-        console.error('❌ Game data not found for:', specialty);
+        console.error('❌ Game data not found');
         return;
     }
     
@@ -242,15 +355,14 @@ function loadGame(specialty) {
     startTimer();
     
     // Reset state
-    gameState.droppedSteps = [];
+    gameState.selectedSteps = [];
+    gameState.selectionOrder = [];
     updateStepCounter();
     
     const submitBtn = document.getElementById('submitBtn');
-    if (submitBtn) {
-        submitBtn.disabled = true;
-    }
+    if (submitBtn) submitBtn.disabled = true;
     
-    console.log('✅ Game loaded successfully');
+    console.log('✅ Game loaded');
 }
 
 function shuffleArray(array) {
@@ -276,198 +388,98 @@ function renderSteps() {
         stepsPool.appendChild(stepEl);
     });
     
-    setupDragAndDrop();
     console.log('✅ Steps rendered:', gameState.currentSteps.length);
 }
 
-function createStepElement(step, index) {
+function createStepElement(step) {
     const div = document.createElement('div');
-    div.className = 'step-item';
-    div.draggable = true;
+    div.className = 'step-item-click';
     div.dataset.stepId = step.id;
     div.dataset.correctOrder = step.order;
     
     div.innerHTML = `
-        <div class="step-number">${String.fromCharCode(65 + index)}</div>
-        <div class="step-text">${step.text}</div>
+        <div class="step-selection-number">?</div>
+        <div class="step-text-click">${step.text}</div>
     `;
+    
+    // Click event for selection
+    div.addEventListener('click', () => toggleStepSelection(div, step));
     
     return div;
 }
 
 // ===================================
-// DRAG AND DROP (DESKTOP)
+// CLICK-TO-SELECT LOGIC
 // ===================================
-function setupDragAndDrop() {
-    const dropZone = document.getElementById('dropZone');
-    const steps = document.querySelectorAll('.step-item');
+function toggleStepSelection(element, step) {
+    const isSelected = element.classList.contains('selected');
     
-    if (!dropZone) {
-        console.error('❌ Drop zone not found');
-        return;
+    if (isSelected) {
+        // Deselect
+        deselectStep(element, step);
+    } else {
+        // Select
+        selectStep(element, step);
     }
     
-    steps.forEach(step => {
-        // Desktop drag events
-        step.addEventListener('dragstart', handleDragStart);
-        step.addEventListener('dragend', handleDragEnd);
-        
-        // Mobile touch events
-        step.addEventListener('touchstart', handleTouchStart, { passive: false });
-        step.addEventListener('touchmove', handleTouchMove, { passive: false });
-        step.addEventListener('touchend', handleTouchEnd, { passive: false });
-    });
-    
-    dropZone.addEventListener('dragover', handleDragOver);
-    dropZone.addEventListener('dragleave', handleDragLeave);
-    dropZone.addEventListener('drop', handleDrop);
-    
-    console.log('✅ Drag & drop setup complete');
-}
-
-function handleDragStart(e) {
-    gameState.draggedElement = e.target;
-    e.target.classList.add('dragging');
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/html', e.target.innerHTML);
-}
-
-function handleDragEnd(e) {
-    e.target.classList.remove('dragging');
-}
-
-function handleDragOver(e) {
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'move';
-    e.currentTarget.classList.add('drag-over');
-}
-
-function handleDragLeave(e) {
-    e.currentTarget.classList.remove('drag-over');
-}
-
-function handleDrop(e) {
-    e.preventDefault();
-    const dropZone = e.currentTarget;
-    dropZone.classList.remove('drag-over');
-    
-    if (gameState.draggedElement) {
-        addStepToDropZone(gameState.draggedElement);
-    }
-}
-
-// ===================================
-// TOUCH HANDLING (MOBILE)
-// ===================================
-let touchClone = null;
-
-function handleTouchStart(e) {
-    const touch = e.touches[0];
-    gameState.touchStartX = touch.clientX;
-    gameState.touchStartY = touch.clientY;
-    gameState.draggedElement = e.currentTarget;
-    
-    // Create visual clone for dragging
-    touchClone = e.currentTarget.cloneNode(true);
-    touchClone.style.position = 'fixed';
-    touchClone.style.zIndex = '10000';
-    touchClone.style.opacity = '0.8';
-    touchClone.style.pointerEvents = 'none';
-    touchClone.style.width = e.currentTarget.offsetWidth + 'px';
-    touchClone.style.left = touch.clientX - (e.currentTarget.offsetWidth / 2) + 'px';
-    touchClone.style.top = touch.clientY - 30 + 'px';
-    document.body.appendChild(touchClone);
-    
-    e.currentTarget.style.opacity = '0.3';
-}
-
-function handleTouchMove(e) {
-    e.preventDefault();
-    
-    if (!touchClone) return;
-    
-    const touch = e.touches[0];
-    touchClone.style.left = touch.clientX - (touchClone.offsetWidth / 2) + 'px';
-    touchClone.style.top = touch.clientY - 30 + 'px';
-}
-
-function handleTouchEnd(e) {
-    if (!gameState.draggedElement) return;
-    
-    const touch = e.changedTouches[0];
-    const dropZone = document.getElementById('dropZone');
-    
-    if (dropZone) {
-        const dropRect = dropZone.getBoundingClientRect();
-        
-        // Check if touch ended inside drop zone
-        if (
-            touch.clientX >= dropRect.left &&
-            touch.clientX <= dropRect.right &&
-            touch.clientY >= dropRect.top &&
-            touch.clientY <= dropRect.bottom
-        ) {
-            addStepToDropZone(gameState.draggedElement);
-        }
-    }
-    
-    // Cleanup
-    if (touchClone) {
-        touchClone.remove();
-        touchClone = null;
-    }
-    
-    if (gameState.draggedElement) {
-        gameState.draggedElement.style.opacity = '1';
-        gameState.draggedElement = null;
-    }
-}
-
-// ===================================
-// ADD STEP TO DROP ZONE
-// ===================================
-function addStepToDropZone(stepElement) {
-    const dropZone = document.getElementById('dropZone');
-    if (!dropZone) return;
-    
-    // Hide placeholder
-    const placeholder = dropZone.querySelector('.drop-placeholder');
-    if (placeholder) {
-        placeholder.classList.add('hidden');
-    }
-    
-    // Clone and add to drop zone
-    const cloned = stepElement.cloneNode(true);
-    cloned.classList.add('dropped');
-    cloned.draggable = false;
-    dropZone.appendChild(cloned);
-    
-    // Remove from pool
-    stepElement.remove();
-    
-    // Track dropped step
-    gameState.droppedSteps.push({
-        id: parseInt(stepElement.dataset.stepId),
-        order: parseInt(stepElement.dataset.correctOrder)
-    });
-    
-    // Update counter
     updateStepCounter();
+    checkSubmitButton();
+}
+
+function selectStep(element, step) {
+    const selectionNumber = gameState.selectionOrder.length + 1;
     
-    // Enable submit if all dropped
-    const submitBtn = document.getElementById('submitBtn');
-    if (submitBtn && gameState.droppedSteps.length === gameState.currentSteps.length) {
-        submitBtn.disabled = false;
+    element.classList.add('selected');
+    element.querySelector('.step-selection-number').textContent = selectionNumber;
+    
+    gameState.selectedSteps.push({
+        element: element,
+        step: step,
+        selectionNumber: selectionNumber
+    });
+    
+    gameState.selectionOrder.push(step.order);
+    
+    console.log('✅ Selected:', step.text, '- Position:', selectionNumber);
+}
+
+function deselectStep(element, step) {
+    element.classList.remove('selected');
+    element.querySelector('.step-selection-number').textContent = '?';
+    
+    // Find and remove from selected steps
+    const index = gameState.selectedSteps.findIndex(s => s.step.id === step.id);
+    if (index > -1) {
+        const removedNumber = gameState.selectedSteps[index].selectionNumber;
+        gameState.selectedSteps.splice(index, 1);
+        gameState.selectionOrder.splice(index, 1);
+        
+        // Renumber remaining steps
+        gameState.selectedSteps.forEach((selected, idx) => {
+            const newNumber = idx + 1;
+            selected.selectionNumber = newNumber;
+            selected.element.querySelector('.step-selection-number').textContent = newNumber;
+        });
     }
     
-    console.log('✅ Step added. Progress:', gameState.droppedSteps.length, '/', gameState.currentSteps.length);
+    console.log('❌ Deselected:', step.text);
 }
 
 function updateStepCounter() {
-    const droppedCount = document.getElementById('droppedCount');
-    if (droppedCount) {
-        droppedCount.textContent = gameState.droppedSteps.length;
+    const selectedCount = document.getElementById('selectedCount');
+    if (selectedCount) {
+        selectedCount.textContent = gameState.selectedSteps.length;
     }
+}
+
+function checkSubmitButton() {
+    const submitBtn = document.getElementById('submitBtn');
+    if (!submitBtn) return;
+    
+    const totalSteps = gameState.currentSteps.length;
+    const selectedCount = gameState.selectedSteps.length;
+    
+    submitBtn.disabled = selectedCount !== totalSteps;
 }
 
 // ===================================
@@ -499,11 +511,9 @@ function stopTimer() {
 function checkAnswer() {
     console.log('🎯 Checking answer...');
     const timeTaken = stopTimer();
-    const dropZone = document.getElementById('dropZone');
-    const droppedElements = Array.from(dropZone.querySelectorAll('.step-item.dropped'));
     
     // Get user's order
-    const userOrder = droppedElements.map(el => parseInt(el.dataset.correctOrder));
+    const userOrder = gameState.selectionOrder;
     
     // Get correct order
     const correctOrder = gameState.currentSteps
@@ -519,12 +529,14 @@ function checkAnswer() {
     const accuracy = Math.round((correctCount / correctOrder.length) * 100);
     const isPerfect = accuracy === 100;
     
-    console.log('📊 Results:', { accuracy, isPerfect, timeTaken });
+    console.log('📊 Results:', { 
+        userOrder, 
+        correctOrder, 
+        accuracy, 
+        isPerfect 
+    });
     
-    // Show result
     showResult(isPerfect, accuracy, timeTaken);
-    
-    // Submit to backend
     submitGameData(isPerfect, accuracy, timeTaken);
 }
 
@@ -535,11 +547,8 @@ function showResult(isPerfect, accuracy, timeTaken) {
     const gameData = GAME_DATA[gameState.selectedSpecialty];
     const reward = gameData.reward;
     
-    // Show modal
     const resultModal = document.getElementById('resultModal');
-    if (resultModal) {
-        resultModal.classList.add('active');
-    }
+    if (resultModal) resultModal.classList.add('active');
     
     // Title and message
     const resultTitle = document.getElementById('resultTitle');
@@ -547,17 +556,19 @@ function showResult(isPerfect, accuracy, timeTaken) {
     
     if (resultTitle) {
         resultTitle.textContent = isPerfect 
-            ? 'Perfect Sequence!' 
-            : accuracy >= 70 ? 'Great Effort!' : 'Keep Practicing!';
+            ? 'Perfect Sequence! 🎉' 
+            : accuracy >= 70 ? 'Great Effort!' : 'Keep Learning!';
     }
     
     if (resultMessage) {
         resultMessage.textContent = isPerfect
-            ? 'You\'ve mastered this clinical protocol!'
-            : 'Review the correct sequence and try again!';
+            ? 'You\'ve mastered this clinical protocol. Here\'s your exclusive reward!'
+            : accuracy >= 70 
+                ? 'You got most steps right! Here\'s a reward for your effort.'
+                : 'Good try! Review the correct sequence and use this discount.';
     }
     
-    // Reward
+    // Reward details
     const rewardImage = document.getElementById('rewardImage');
     const rewardProduct = document.getElementById('rewardProduct');
     const rewardDiscount = document.getElementById('rewardDiscount');
@@ -597,6 +608,7 @@ async function submitGameData(isPerfect, accuracy, timeTaken) {
     const payload = {
         timestamp: new Date().toISOString(),
         email: gameState.userEmail,
+        customerId: gameState.customerId,
         specialty: gameState.selectedSpecialty,
         gameTitle: gameData.title,
         accuracy: accuracy,
@@ -618,38 +630,12 @@ async function submitGameData(isPerfect, accuracy, timeTaken) {
         
         const result = await response.json();
         console.log('✅ Submission result:', result);
+        
+        // Mark as played
+        gameState.hasPlayed = true;
+        
     } catch (error) {
         console.error('❌ Submission error:', error);
-    }
-}
-
-// ===================================
-// RESET GAME
-// ===================================
-function resetGame() {
-    console.log('🔄 Resetting game...');
-    
-    // Hide result modal
-    const resultModal = document.getElementById('resultModal');
-    if (resultModal) {
-        resultModal.classList.remove('active');
-    }
-    
-    // Show specialty modal
-    const specialtyModal = document.getElementById('specialtyModal');
-    if (specialtyModal) {
-        specialtyModal.classList.add('active');
-    }
-    
-    // Hide main container
-    const mainContainer = document.getElementById('mainContainer');
-    if (mainContainer) {
-        mainContainer.classList.add('hidden');
-    }
-    
-    // Stop timer
-    if (gameState.timerInterval) {
-        clearInterval(gameState.timerInterval);
     }
 }
 
@@ -658,15 +644,18 @@ function resetGame() {
 // ===================================
 function shopNow() {
     const gameData = GAME_DATA[gameState.selectedSpecialty];
-    const coupon = gameData.reward.code;
+    const coupon = gameData ? gameData.reward.code : 'RETFREE15';
     
     console.log('🛒 Shop now with coupon:', coupon);
     
-    // Send message to parent window (Magento iframe)
+    // Send message to parent window (Magento)
     window.parent.postMessage({
         action: 'applyCoupon',
         coupon: coupon
     }, '*');
+    
+    // Optionally redirect
+    // window.location.href = `https://pinkblue.in/checkout?coupon=${coupon}`;
 }
 
 // ===================================
@@ -678,16 +667,17 @@ function copyCouponCode() {
     
     const code = couponCode.textContent;
     
-    // Copy to clipboard
     navigator.clipboard.writeText(code).then(() => {
         const copyBtn = document.getElementById('copyBtn');
         if (copyBtn) {
+            // Change to checkmark
             copyBtn.innerHTML = `
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="20 6 9 17 4 12"/>
                 </svg>
             `;
             
+            // Revert after 2 seconds
             setTimeout(() => {
                 copyBtn.innerHTML = `
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -698,8 +688,9 @@ function copyCouponCode() {
             }, 2000);
         }
         
-        console.log('✅ Coupon code copied:', code);
+        console.log('✅ Coupon copied:', code);
     }).catch(err => {
         console.error('❌ Copy failed:', err);
+        alert('Coupon code: ' + code);
     });
 }
