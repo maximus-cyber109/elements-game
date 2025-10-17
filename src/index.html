@@ -2,91 +2,138 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Elements Mastery Challenge | PinkBlue Dental</title>
-    <meta name="description" content="Master clinical sequences and unlock exclusive discounts on Elements products">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Overlay -->
-    <div id="overlay" class="overlay"></div>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="grid-pattern"></div>
+    </div>
 
     <!-- Loading Screen -->
     <div id="loadingScreen" class="loading-screen">
-        <div class="loading-spinner"></div>
-        <p class="loading-text">Preparing your challenge...</p>
+        <div class="loading-content">
+            <div class="pulse-loader">
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring"></div>
+                <div class="pulse-ring"></div>
+            </div>
+            <h2 class="loading-title">Elements Mastery</h2>
+            <p class="loading-subtitle">Preparing your challenge...</p>
+        </div>
     </div>
 
     <!-- Specialty Selection Modal -->
-    <div id="specialtyModal" class="modal active">
-        <div class="modal-content specialty-modal">
-            <div class="modal-header">
-                <h1 class="modal-title">Choose Your Clinical Focus</h1>
-                <p class="modal-subtitle">Select your specialty for a personalized challenge</p>
-            </div>
-            
-            <div class="specialty-grid">
-                <div class="specialty-card" data-specialty="crown" data-product="retract">
-                    <div class="specialty-icon">
-                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
-                            <path d="M32 8L38 24H50L40 32L44 48L32 40L20 48L24 32L14 24H26L32 8Z"/>
+    <div id="specialtyModal" class="modal-overlay active">
+        <div class="modal-container">
+            <div class="glass-modal specialty-modal">
+                <div class="modal-glow"></div>
+                
+                <div class="modal-header">
+                    <div class="header-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7v10c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-10-5z"/>
                         </svg>
                     </div>
-                    <h3>Crown & Bridge</h3>
-                    <p>Master prosthetic protocols</p>
+                    <h1 class="modal-title">Choose Your Specialty</h1>
+                    <p class="modal-subtitle">Select your clinical focus for a personalized challenge</p>
                 </div>
 
-                <div class="specialty-card" data-specialty="cosmetic" data-product="bleaching">
-                    <div class="specialty-icon">
-                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
-                            <circle cx="32" cy="32" r="20"/>
-                            <path d="M22 32C22 32 26 38 32 38C38 38 42 32 42 32"/>
-                            <circle cx="26" cy="26" r="2" fill="currentColor"/>
-                            <circle cx="38" cy="26" r="2" fill="currentColor"/>
-                        </svg>
+                <div class="specialty-grid">
+                    <div class="specialty-card" data-specialty="crown">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <div class="specialty-icon-wrapper">
+                                <svg class="specialty-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M32 8L38 24H50L40 32L44 48L32 40L20 48L24 32L14 24H26L32 8Z"/>
+                                </svg>
+                            </div>
+                            <h3>Crown & Bridge</h3>
+                            <p>Master prosthetic protocols</p>
+                            <div class="card-arrow">→</div>
+                        </div>
                     </div>
-                    <h3>Smile Designer</h3>
-                    <p>Perfect aesthetic procedures</p>
-                </div>
 
-                <div class="specialty-card" data-specialty="prevention" data-product="thixotropic">
-                    <div class="specialty-icon">
-                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
-                            <path d="M32 8L12 18V32C12 44 20 52 32 56C44 52 52 44 52 32V18L32 8Z"/>
-                            <path d="M24 32L30 38L42 26"/>
-                        </svg>
+                    <div class="specialty-card" data-specialty="cosmetic">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <div class="specialty-icon-wrapper">
+                                <svg class="specialty-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
+                                    ircle cx="32" cy="32" r="2020"/>
+                                    <path d="M22 32C22 32 26 38 32 38C38 38 42 32 42 32"/>
+                                    ircle cx="26" cy="26" r="2"2" fill="currentColor"/>
+                                    ircle cx="38" cy="26" r="2"2" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h3>Smile Designer</h3>
+                            <p>Perfect aesthetic procedures</p>
+                            <div class="card-arrow">→</div>
+                        </div>
                     </div>
-                    <h3>Prevention Champion</h3>
-                    <p>Excel in preventive care</p>
-                </div>
 
-                <div class="specialty-card" data-specialty="general" data-product="retract">
-                    <div class="specialty-icon">
-                        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
-                            <circle cx="32" cy="32" r="24"/>
-                            <path d="M32 16V32L42 38"/>
-                        </svg>
+                    <div class="specialty-card" data-specialty="prevention">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <div class="specialty-icon-wrapper">
+                                <svg class="specialty-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
+                                    <path d="M32 8L12 18V32C12 44 20 52 32 56C44 52 52 44 52 32V18L32 8Z"/>
+                                    <path d="M24 32L30 38L42 26"/>
+                                </svg>
+                            </div>
+                            <h3>Prevention Champion</h3>
+                            <p>Excel in preventive care</p>
+                            <div class="card-arrow">→</div>
+                        </div>
                     </div>
-                    <h3>All-Rounder</h3>
-                    <p>Handle diverse cases</p>
+
+                    <div class="specialty-card" data-specialty="general">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <div class="specialty-icon-wrapper">
+                                <svg class="specialty-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
+                                    ircle cx="32" cy="32"2" r="24"/>
+                                    <path d="M32 16V32L42 38"/>
+                                </svg>
+                            </div>
+                            <h3>All-Rounder</h3>
+                            <p>Handle diverse cases</p>
+                            <div class="card-arrow">→</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Main Game Container -->
-    <div id="mainContainer" class="container hidden">
-        <!-- Header -->
-        <header class="game-header">
+    <div id="mainContainer" class="main-container hidden">
+        <!-- Header with Glass Effect -->
+        <header class="glass-header">
             <div class="header-content">
-                <div class="brand">
-                    <h1>Elements Mastery</h1>
-                    <span class="specialty-badge" id="specialtyBadge">Crown & Bridge</span>
+                <div class="brand-section">
+                    <div class="brand-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7v10c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="brand-title">Elements Mastery</h1>
+                        <span class="specialty-badge" id="specialtyBadge">Crown & Bridge</span>
+                    </div>
                 </div>
-                <div class="timer-display">
+                <div class="timer-badge">
                     <svg class="timer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"/>
                         <polyline points="12 6 12 12 16 14"/>
@@ -96,91 +143,150 @@
             </div>
         </header>
 
-        <!-- Game Info -->
-        <section class="game-info">
-            <h2 id="gameTitle">Perfect Crown Prep Protocol</h2>
-            <p id="gameDescription">Drag and drop the steps in the correct clinical sequence</p>
-        </section>
+        <!-- Game Info Card -->
+        <div class="glass-card game-info-card">
+            <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    ircle cx="12" cy="12"2" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                </svg>
+            </div>
+            <div class="info-content">
+                <h2 id="gameTitle">Perfect Crown Prep Protocol</h2>
+                <p id="gameDescription">Drag and drop the steps in the correct clinical sequence</p>
+            </div>
+        </div>
 
-        <!-- Drop Zone -->
-        <section class="drop-zone-container">
-            <h3 class="zone-label">Your Sequence</h3>
+        <!-- Drop Zone (Glass Effect) -->
+        <div class="glass-card drop-zone-card">
+            <div class="zone-header">
+                <div class="zone-indicator"></div>
+                <h3>Your Sequence</h3>
+                <span class="step-counter"><span id="droppedCount">0</span>/<span id="totalCount">7</span></span>
+            </div>
+            
             <div id="dropZone" class="drop-zone">
                 <div class="drop-placeholder">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 5v14M5 12l7 7 7-7"/>
-                    </svg>
-                    <p>Drag steps here in correct order</p>
+                    <div class="placeholder-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12l7 7 7-7"/>
+                        </svg>
+                    </div>
+                    <p>Drag steps here</p>
+                    <span class="placeholder-hint">Touch and hold to drag on mobile</span>
                 </div>
             </div>
-        </section>
+        </div>
 
         <!-- Steps Pool -->
-        <section class="steps-pool-container">
-            <h3 class="zone-label">Available Steps</h3>
-            <div id="stepsPool" class="steps-pool">
-                <!-- Steps will be dynamically inserted -->
+        <div class="glass-card steps-pool-card">
+            <div class="zone-header">
+                <div class="zone-indicator" style="background: linear-gradient(135deg, #FFB627, #FF6B9D);"></div>
+                <h3>Available Steps</h3>
+                <span class="shuffle-hint">Tap to start dragging</span>
             </div>
-        </section>
+            
+            <div id="stepsPool" class="steps-pool">
+                <!-- Steps dynamically inserted -->
+            </div>
+        </div>
 
-        <!-- Submit Button -->
-        <div class="submit-container">
+        <!-- Submit Button with Floating Animation -->
+        <div class="submit-wrapper">
             <button id="submitBtn" class="submit-btn" disabled>
-                <span>Check My Answer</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"/>
-                </svg>
+                <span class="btn-bg"></span>
+                <span class="btn-content">
+                    <span>Check My Answer</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </span>
             </button>
         </div>
     </div>
 
-    <!-- Result Modal -->
-    <div id="resultModal" class="modal">
-        <div class="modal-content result-modal">
-            <div class="result-icon" id="resultIcon"></div>
-            <h2 id="resultTitle">Perfect Sequence!</h2>
-            <p id="resultMessage">You've mastered this clinical protocol</p>
-
-            <!-- Reward Card -->
-            <div class="reward-card">
-                <img id="rewardImage" class="reward-image" src="" alt="Product">
-                <div class="reward-info">
-                    <h3 id="rewardProduct">Elements Retract Multidose Syringe</h3>
-                    <p class="reward-discount" id="rewardDiscount">FREE Sample + 15% Off</p>
-                    <div class="coupon-box">
-                        <span class="coupon-label">Your Code:</span>
-                        <span id="couponCode" class="coupon-code">RETFREE15</span>
+    <!-- Result Modal (Premium Design) -->
+    <div id="resultModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="glass-modal result-modal">
+                <div class="modal-glow success-glow"></div>
+                
+                <!-- Success Animation -->
+                <div class="result-animation">
+                    <div class="success-checkmark">
+                        <svg viewBox="0 0 52 52">
+                            ircle cx="26" cy="26" r="2525" fill="none"/>
+                            <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
                     </div>
                 </div>
-            </div>
 
-            <!-- Stats -->
-            <div class="result-stats">
-                <div class="stat-item">
-                    <span class="stat-label">Time</span>
-                    <span id="statTime" class="stat-value">01:23</span>
+                <h2 id="resultTitle" class="result-title">Perfect Sequence!</h2>
+                <p id="resultMessage" class="result-message">You've mastered this clinical protocol</p>
+
+                <!-- Reward Card with Product -->
+                <div class="reward-showcase">
+                    <div class="reward-card-3d">
+                        <div class="reward-bg"></div>
+                        <img id="rewardImage" class="reward-product-img" src="" alt="Product">
+                        <div class="reward-info">
+                            <h3 id="rewardProduct">Elements Retract</h3>
+                            <p class="reward-discount" id="rewardDiscount">FREE + 15% Off</p>
+                        </div>
+                    </div>
+                    
+                    <div class="coupon-container">
+                        <div class="coupon-label">Your Exclusive Code</div>
+                        <div class="coupon-code-box" id="couponCodeBox">
+                            <span id="couponCode">RETFREE15</span>
+                            <button class="copy-btn" id="copyBtn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Accuracy</span>
-                    <span id="statAccuracy" class="stat-value">100%</span>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-value" id="statTime">01:23</div>
+                        <div class="stat-label">Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-value" id="statAccuracy">100%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Educational Tip -->
-            <div class="edu-tip">
-                <div class="tip-icon">💡</div>
-                <p id="eduTipText"></p>
-            </div>
+                <!-- Educational Tip -->
+                <div class="edu-tip-card">
+                    <div class="tip-header">
+                        <div class="bulb-icon">💡</div>
+                        <span>Pro Tip</span>
+                    </div>
+                    <p id="eduTipText"></p>
+                </div>
 
-            <!-- Actions -->
-            <div class="result-actions">
-                <button id="playAgainBtn" class="btn-secondary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0118.8-4.3M22 12.5a10 10 0 01-18.8 4.2"/>
-                    </svg>
-                    Try Another Challenge
-                </button>
-                <button id="shopNowBtn" class="btn-primary">Shop Now</button>
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button id="playAgainBtn" class="btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0118.8-4.3M22 12.5a10 10 0 01-18.8 4.2"/>
+                        </svg>
+                        Try Another
+                    </button>
+                    <button id="shopNowBtn" class="btn-primary">
+                        <span>Shop Now</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
