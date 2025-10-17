@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elements Mastery Challenge - PinkBlue Dental</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Overlay for modals -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Loading your personalized experience...</p>
+        </div>
+    </div>
+
+    <!-- Specialty Selection Modal -->
+    <div id="specialtyModal" class="modal">
+        <div class="modal-content specialty-selector">
+            <div class="modal-header">
+                <h2 class="modal-title">What's Your Clinical Focus?</h2>
+                <p class="modal-subtitle">Choose your specialty to unlock personalized challenges and rewards</p>
+            </div>
+            
+            <div class="specialty-grid">
+                <div class="specialty-card" data-specialty="crown">
+                    <div class="specialty-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                    </div>
+                    <h3>Crown & Bridge</h3>
+                    <p>Prosthetic work specialist</p>
+                </div>
+
+                <div class="specialty-card" data-specialty="cosmetic">
+                    <div class="specialty-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3>Smile Designer</h3>
+                    <p>Aesthetic & cosmetic dentistry</p>
+                </div>
+
+                <div class="specialty-card" data-specialty="prevention">
+                    <div class="specialty-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                        </svg>
+                    </div>
+                    <h3>Prevention Champion</h3>
+                    <p>Preventive care focused</p>
+                </div>
+
+                <div class="specialty-card" data-specialty="endo">
+                    <div class="specialty-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 3L5 7v7c0 2.8 2.2 5 5 5s5-2.2 5-5V7l-4-4H9z"/>
+                        </svg>
+                    </div>
+                    <h3>Endo Specialist</h3>
+                    <p>Root canal expert</p>
+                </div>
+
+                <div class="specialty-card" data-specialty="general">
+                    <div class="specialty-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            ircle cx="12" cy="12"2" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>All-Rounder</h3>
+                    <p>General practice dentist</p>
+                </div>
+
+                <div class="specialty-card" data-specialty="clinic">
+                    <div class="specialty-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <h3>Practice Owner</h3>
+                    <p>Multi-chair clinic manager</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Game Container -->
+    <div id="mainContainer" class="container" style="display: none;">
+        <!-- Header -->
+        <header class="game-header">
+            <div class="header-content">
+                <div class="brand">
+                    <h1>Elements Mastery</h1>
+                    <p class="specialty-badge" id="specialtyBadge"></p>
+                </div>
+                <button class="change-specialty-btn" id="changeSpecialty">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0118.8-4.3M22 12.5a10 10 0 01-18.8 4.2"/>
+                    </svg>
+                    Change
+                </button>
+            </div>
+        </header>
+
+        <!-- Game Instructions -->
+        <section class="game-intro">
+            <h2 class="game-title" id="gameTitle">Arrange the Perfect Clinical Sequence</h2>
+            <p class="game-description" id="gameDescription">Drag and drop the steps in the correct order to win exclusive discounts!</p>
+            <div class="timer-container">
+                <svg class="timer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    irclele cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <span class="timer" id="timer">00:00</span>
+            </div>
+        </section>
+
+        <!-- Drag and Drop Game Area -->
+        <section class="game-area">
+            <div class="drop-zone" id="dropZone">
+                <div class="drop-instruction">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 5v14M5 12l7 7 7-7"/>
+                    </svg>
+                    <p>Drag steps here in correct order</p>
+                </div>
+            </div>
+
+            <div class="steps-pool" id="stepsPool">
+                <!-- Steps will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- Submit Button -->
+        <div class="submit-container">
+            <button class="submit-btn" id="submitBtn" disabled>
+                <span>Check My Answer</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content result-modal">
+            <div class="result-animation" id="resultAnimation"></div>
+            <h2 class="result-title" id="resultTitle"></h2>
+            <p class="result-message" id="resultMessage"></p>
+            
+            <div class="reward-card" id="rewardCard">
+                <img class="reward-product-image" id="rewardImage" alt="Product">
+                <div class="reward-details">
+                    <h3 id="rewardProductName"></h3>
+                    <p class="discount-badge" id="rewardDiscount"></p>
+                    <div class="coupon-code" id="couponCode"></div>
+                </div>
+            </div>
+
+            <div class="result-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Time Taken</span>
+                    <span class="stat-value" id="timeTaken"></span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Accuracy</span>
+                    <span class="stat-value" id="accuracy"></span>
+                </div>
+            </div>
+
+            <div class="result-actions">
+                <button class="btn-primary" id="shopNowBtn">Shop Now</button>
+                <button class="btn-secondary" id="playAgainBtn">Try Another Challenge</button>
+            </div>
+
+            <div class="educational-tip" id="educationalTip"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
