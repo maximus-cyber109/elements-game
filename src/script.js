@@ -694,3 +694,120 @@ function copyCouponCode() {
         alert('Coupon code: ' + code);
     });
 }
+// ===================================
+// BACKGROUND MUSIC & SOUNDS
+// ===================================
+let musicEnabled = false;
+const bgMusic = document.getElementById('bgMusic');
+const successSound = document.getElementById('successSound');
+const soundToggle = document.getElementById('soundToggle');
+
+// Sound toggle
+if (soundToggle) {
+    soundToggle.addEventListener('click', toggleSound);
+}
+
+function toggleSound() {
+    musicEnabled = !musicEnabled;
+    
+    if (musicEnabled) {
+        bgMusic.volume = 0.3;
+        bgMusic.play().catch(e => console.log('Audio play blocked:', e));
+        soundToggle.classList.remove('muted');
+    } else {
+        bgMusic.pause();
+        soundToggle.classList.add('muted');
+    }
+}
+
+// Auto-play on first interaction
+document.addEventListener('click', () => {
+    if (!musicEnabled && bgMusic.paused) {
+        musicEnabled = true;
+        bgMusic.volume = 0.3;
+        bgMusic.play().catch(e => console.log('Audio play blocked:', e));
+    }
+}, { once: true });
+
+// Play success sound on correct answer
+function playSuccessSound() {
+    if (musicEnabled && successSound) {
+        successSound.volume = 0.5;
+        successSound.play().catch(e => console.log('Sound play blocked:', e));
+    }
+}
+
+// ===================================
+// HAND GESTURE HINTS
+// ===================================
+function showHandGestures() {
+    // Wait for steps to load
+    setTimeout(() => {
+        const firstStep = document.querySelector('.step-item-click');
+        if (!firstStep) return;
+        
+        // Create hand pointer
+        const hand = document.createElement('div');
+        hand.className = 'hand-pointer';
+        hand.innerHTML = '👆';
+        document.body.appendChild(hand);
+        
+        // Create tap hint
+        const hint = document.createElement('div');
+        hint.className = 'tap-hint';
+        hint.textContent = 'Tap to select';
+        firstStep.style.position = 'relative';
+        firstStep.appendChild(hint);
+        
+        // Position hand
+        const rect = firstStep.getBoundingClientRect();
+        hand.style.left = (rect.left + rect.width / 2 - 24) + 'px';
+        hand.style.top = (rect.top + rect.height / 2 - 24) + 'px';
+        
+        // Remove after 6 seconds
+        setTimeout(() => {
+            hand.remove();
+            hint.remove();
+        }, 6000);
+        
+    }, 1000);
+}
+
+// ===================================
+// UPDATE CHECK ANSWER TO PLAY SOUND
+// ===================================
+// Modify the existing checkAnswer function
+const originalCheckAnswer = checkAnswer;
+checkAnswer = function() {
+    originalCheckAnswer();
+    
+    // Play success sound if perfect
+    const accuracy = calculateAccuracy(); // You'll need to extract this logic
+    if (accuracy === 100) {
+        playSuccessSound();
+    }
+}
+
+function calculateAccuracy() {
+    const userOrder = gameState.selectionOrder;
+    const correctOrder = gameState.currentSteps
+        .sort((a, b) => a.order - b.order)
+        .map(step => step.order);
+    
+    let correctCount = 0;
+    userOrder.forEach((order, index) => {
+        if (order === correctOrder[index]) correctCount++;
+    });
+    
+    return Math.round((correctCount / correctOrder.length) * 100);
+}
+
+// ===================================
+// SHOW GESTURES ON GAME LOAD
+// ===================================
+// Add this to your existing loadGame function at the end:
+const originalLoadGame = loadGame;
+loadGame = function(specialty) {
+    originalLoadGame(specialty);
+    showHandGestures();
+}
