@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Elements Mastery Challenge | PinkBlue Dental</title>
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,12 +29,91 @@
                 <div class="pulse-ring"></div>
             </div>
             <h2 class="loading-title">Elements Mastery</h2>
-            <p class="loading-subtitle">Preparing your challenge...</p>
+            <p class="loading-subtitle">Validating your account...</p>
+        </div>
+    </div>
+
+    <!-- Email Verification Modal -->
+    <div id="emailModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="glass-modal email-modal">
+                <div class="modal-glow"></div>
+                
+                <div class="modal-header">
+                    <div class="header-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h1 class="modal-title">Verify Your Email</h1>
+                    <p class="modal-subtitle">Enter your registered PinkBlue Dental email to start</p>
+                </div>
+
+                <div class="email-form">
+                    <div class="input-group">
+                        <input type="email" id="emailInput" class="email-input" placeholder="doctor@clinic.com" autocomplete="email">
+                        <div class="input-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="emailError" class="error-message"></div>
+                    <button id="verifyEmailBtn" class="verify-btn">
+                        <span class="btn-content">
+                            <span>Verify & Continue</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Already Played Modal -->
+    <div id="alreadyPlayedModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="glass-modal already-played-modal">
+                <div class="modal-glow"></div>
+                
+                <div class="result-animation">
+                    <div class="info-icon-large">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            ircle cx="12" cy="12"2" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <h2 class="result-title">Already Played!</h2>
+                <p class="result-message">You've already completed this challenge and claimed your reward.</p>
+
+                <div class="reward-reminder">
+                    <h3>Your Reward Code</h3>
+                    <div class="coupon-code-box">
+                        <span id="previousCouponCode">RETFREE15</span>
+                    </div>
+                    <p class="reminder-text">Use this code at checkout to claim your discount</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="shopNowBtnAlready" class="btn-primary full-width">
+                        <span>Shop Now</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Specialty Selection Modal -->
-    <div id="specialtyModal" class="modal-overlay active">
+    <div id="specialtyModal" class="modal-overlay">
         <div class="modal-container">
             <div class="glass-modal specialty-modal">
                 <div class="modal-glow"></div>
@@ -71,10 +148,10 @@
                         <div class="card-content">
                             <div class="specialty-icon-wrapper">
                                 <svg class="specialty-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
-                                    ircle cx="32" cy="32" r="2020"/>
+                                    irclele cx="32" cy="32" r="20"/>
                                     <path d="M22 32C22 32 26 38 32 38C38 38 42 32 42 32"/>
-                                    ircle cx="26" cy="26" r="2"2" fill="currentColor"/>
-                                    ircle cx="38" cy="26" r="2"2" fill="currentColor"/>
+                                    ircle cx="26" cy="26" r="2" fill="currentntColor"/>
+                                    ircle cx="38" cy="26" r="2" fill="="currentColor"/>
                                 </svg>
                             </div>
                             <h3>Smile Designer</h3>
@@ -119,7 +196,7 @@
 
     <!-- Main Game Container -->
     <div id="mainContainer" class="main-container hidden">
-        <!-- Header with Glass Effect -->
+        <!-- Header -->
         <header class="glass-header">
             <div class="header-content">
                 <div class="brand-section">
@@ -135,7 +212,7 @@
                 </div>
                 <div class="timer-badge">
                     <svg class="timer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
+                        ircle cx="12" cy="12"2" r="10"/>
                         <polyline points="12 6 12 12 16 14"/>
                     </svg>
                     <span id="timer">00:00</span>
@@ -143,55 +220,52 @@
             </div>
         </header>
 
-        <!-- Game Info Card -->
+        <!-- Game Info -->
         <div class="glass-card game-info-card">
             <div class="info-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    ircle cx="12" cy="12"2" r="10"/>
+                    ircle cx="12"2" cy="12" r="10"/>
                     <path d="M12 16v-4M12 8h.01"/>
                 </svg>
             </div>
             <div class="info-content">
                 <h2 id="gameTitle">Perfect Crown Prep Protocol</h2>
-                <p id="gameDescription">Drag and drop the steps in the correct clinical sequence</p>
+                <p id="gameDescription">Click steps in the correct clinical sequence</p>
             </div>
         </div>
 
-        <!-- Drop Zone (Glass Effect) -->
-        <div class="glass-card drop-zone-card">
-            <div class="zone-header">
-                <div class="zone-indicator"></div>
-                <h3>Your Sequence</h3>
-                <span class="step-counter"><span id="droppedCount">0</span>/<span id="totalCount">7</span></span>
+        <!-- Instructions Card -->
+        <div class="glass-card instructions-card">
+            <div class="instruction-item">
+                <div class="instruction-number">1</div>
+                <p>Click on each step in the correct order</p>
             </div>
-            
-            <div id="dropZone" class="drop-zone">
-                <div class="drop-placeholder">
-                    <div class="placeholder-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 5v14M5 12l7 7 7-7"/>
-                        </svg>
-                    </div>
-                    <p>Drag steps here</p>
-                    <span class="placeholder-hint">Touch and hold to drag on mobile</span>
-                </div>
+            <div class="instruction-item">
+                <div class="instruction-number">2</div>
+                <p>Selected steps will be numbered automatically</p>
+            </div>
+            <div class="instruction-item">
+                <div class="instruction-number">3</div>
+                <p>Click again to deselect if you make a mistake</p>
             </div>
         </div>
 
-        <!-- Steps Pool -->
+        <!-- Steps Pool (Click to Select) -->
         <div class="glass-card steps-pool-card">
             <div class="zone-header">
-                <div class="zone-indicator" style="background: linear-gradient(135deg, #FFB627, #FF6B9D);"></div>
-                <h3>Available Steps</h3>
-                <span class="shuffle-hint">Tap to start dragging</span>
+                <div class="zone-indicator"></div>
+                <h3>Clinical Steps</h3>
+                <span class="step-counter">
+                    <span id="selectedCount">0</span>/<span id="totalCount">7</span> Selected
+                </span>
             </div>
             
-            <div id="stepsPool" class="steps-pool">
+            <div id="stepsPool" class="steps-pool-click">
                 <!-- Steps dynamically inserted -->
             </div>
         </div>
 
-        <!-- Submit Button with Floating Animation -->
+        <!-- Submit Button -->
         <div class="submit-wrapper">
             <button id="submitBtn" class="submit-btn" disabled>
                 <span class="btn-bg"></span>
@@ -205,13 +279,12 @@
         </div>
     </div>
 
-    <!-- Result Modal (Premium Design) -->
+    <!-- Result Modal -->
     <div id="resultModal" class="modal-overlay">
         <div class="modal-container">
             <div class="glass-modal result-modal">
                 <div class="modal-glow success-glow"></div>
                 
-                <!-- Success Animation -->
                 <div class="result-animation">
                     <div class="success-checkmark">
                         <svg viewBox="0 0 52 52">
@@ -224,19 +297,19 @@
                 <h2 id="resultTitle" class="result-title">Perfect Sequence!</h2>
                 <p id="resultMessage" class="result-message">You've mastered this clinical protocol</p>
 
-                <!-- Reward Card with Product -->
+                <!-- Reward Showcase -->
                 <div class="reward-showcase">
                     <div class="reward-card-3d">
                         <div class="reward-bg"></div>
                         <img id="rewardImage" class="reward-product-img" src="" alt="Product">
                         <div class="reward-info">
                             <h3 id="rewardProduct">Elements Retract</h3>
-                            <p class="reward-discount" id="rewardDiscount">FREE + 15% Off</p>
+                            <p class="reward-discount" id="rewardDiscount">FREEBIE + 15% Off</p>
                         </div>
                     </div>
                     
                     <div class="coupon-container">
-                        <div class="coupon-label">Your Exclusive Code</div>
+                        <div class="coupon-label">Your Exclusive Reward Code</div>
                         <div class="coupon-code-box" id="couponCodeBox">
                             <span id="couponCode">RETFREE15</span>
                             <button class="copy-btn" id="copyBtn">
@@ -249,7 +322,7 @@
                     </div>
                 </div>
 
-                <!-- Stats Grid -->
+                <!-- Stats -->
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-icon">⚡</div>
@@ -272,16 +345,10 @@
                     <p id="eduTipText"></p>
                 </div>
 
-                <!-- Action Buttons -->
+                <!-- Action Button (Only Shop Now) -->
                 <div class="action-buttons">
-                    <button id="playAgainBtn" class="btn-secondary">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0118.8-4.3M22 12.5a10 10 0 01-18.8 4.2"/>
-                        </svg>
-                        Try Another
-                    </button>
-                    <button id="shopNowBtn" class="btn-primary">
-                        <span>Shop Now</span>
+                    <button id="shopNowBtn" class="btn-primary full-width">
+                        <span>Shop Now & Use Code</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
