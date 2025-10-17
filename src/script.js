@@ -96,13 +96,16 @@ let gameState = {
     startTime: null,
     timerInterval: null,
     userEmail: null,
-    draggedElement: null
+    draggedElement: null,
+    touchStartY: 0,
+    touchStartX: 0
 };
 
 // ===================================
 // INITIALIZATION
 // ===================================
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🎮 Elements Mastery Game Initialized');
     init();
 });
 
@@ -110,52 +113,89 @@ function init() {
     getUserEmail();
     setupEventListeners();
     
-    // Hide loading screen after 1 second
+    // Hide loading screen
     setTimeout(() => {
-        document.getElementById('loadingScreen').classList.add('hidden');
-        document.getElementById('overlay').classList.add('active');
-    }, 1000);
+        const loadingScreen = document.getElementById('loadingScreen');
+        if (loadingScreen) {
+            loadingScreen.classList.add('hidden');
+        }
+    }, 1500);
 }
 
 function getUserEmail() {
     const urlParams = new URLSearchParams(window.location.search);
     gameState.userEmail = urlParams.get('email') || 'guest@pinkblue.in';
+    console.log('👤 User Email:', gameState.userEmail);
 }
 
 // ===================================
 // EVENT LISTENERS
 // ===================================
 function setupEventListeners() {
+    console.log('🎯 Setting up event listeners...');
+    
     // Specialty selection
-    document.querySelectorAll('.specialty-card').forEach(card => {
+    const specialtyCards = document.querySelectorAll('.specialty-card');
+    console.log('📋 Found specialty cards:', specialtyCards.length);
+    
+    specialtyCards.forEach(card => {
         card.addEventListener('click', (e) => {
             const specialty = e.currentTarget.dataset.specialty;
+            console.log('✅ Selected specialty:', specialty);
             selectSpecialty(specialty);
         });
     });
     
     // Submit button
-    document.getElementById('submitBtn').addEventListener('click', checkAnswer);
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', checkAnswer);
+    }
     
     // Play again
-    document.getElementById('playAgainBtn').addEventListener('click', resetGame);
+    const playAgainBtn = document.getElementById('playAgainBtn');
+    if (playAgainBtn) {
+        playAgainBtn.addEventListener('click', resetGame);
+    }
     
     // Shop now
-    document.getElementById('shopNowBtn').addEventListener('click', shopNow);
+    const shopNowBtn = document.getElementById('shopNowBtn');
+    if (shopNowBtn) {
+        shopNowBtn.addEventListener('click', shopNow);
+    }
+    
+    // Copy coupon code
+    const copyBtn = document.getElementById('copyBtn');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', copyCouponCode);
+    }
 }
 
 // ===================================
 // SPECIALTY SELECTION
 // ===================================
 function selectSpecialty(specialty) {
+    console.log('🎯 Selecting specialty:', specialty);
     gameState.selectedSpecialty = specialty;
     
     // Hide modal
-    document.getElementById('specialtyModal').classList.remove('active');
-    document.getElementById('overlay').classList.remove('active');
+    const modal = document.getElementById('specialtyModal');
+    const mainContainer = document.getElementById('mainContainer');
+    const specialtyBadge = document.getElementById('specialtyBadge');
     
-    // Show main container
-    document.getElementById('mainContainer').classList.remove('hidden');
+    console.log('🔍 Elements found:', {
+        modal: !!modal,
+        mainContainer: !!mainContainer,
+        specialtyBadge: !!specialtyBadge
+    });
+    
+    if (modal) {
+        modal.classList.remove('active');
+    }
+    
+    if (mainContainer) {
+        mainContainer.classList.remove('hidden');
+    }
     
     // Update badge
     const badges = {
@@ -164,7 +204,10 @@ function selectSpecialty(specialty) {
         prevention: 'Prevention Champion',
         general: 'All-Rounder'
     };
-    document.getElementById('specialtyBadge').textContent = badges[specialty];
+    
+    if (specialtyBadge) {
+        specialtyBadge.textContent = badges[specialty];
+    }
     
     // Load game
     loadGame(specialty);
@@ -174,11 +217,22 @@ function selectSpecialty(specialty) {
 // GAME LOADING
 // ===================================
 function loadGame(specialty) {
+    console.log('🎮 Loading game for:', specialty);
     const gameData = GAME_DATA[specialty];
     
+    if (!gameData) {
+        console.error('❌ Game data not found for:', specialty);
+        return;
+    }
+    
     // Set title and description
-    document.getElementById('gameTitle').textContent = gameData.title;
-    document.getElementById('gameDescription').textContent = gameData.description;
+    const gameTitle = document.getElementById('gameTitle');
+    const gameDescription = document.getElementById('gameDescription');
+    const totalCount = document.getElementById('totalCount');
+    
+    if (gameTitle) gameTitle.textContent = gameData.title;
+    if (gameDescription) gameDescription.textContent = gameData.description;
+    if (totalCount) totalCount.textContent = gameData.steps.length;
     
     // Shuffle and render steps
     gameState.currentSteps = shuffleArray([...gameData.steps]);
@@ -189,7 +243,14 @@ function loadGame(specialty) {
     
     // Reset state
     gameState.droppedSteps = [];
-    document.getElementById('submitBtn').disabled = true;
+    updateStepCounter();
+    
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) {
+        submitBtn.disabled = true;
+    }
+    
+    console.log('✅ Game loaded successfully');
 }
 
 function shuffleArray(array) {
@@ -203,6 +264,11 @@ function shuffleArray(array) {
 
 function renderSteps() {
     const stepsPool = document.getElementById('stepsPool');
+    if (!stepsPool) {
+        console.error('❌ Steps pool not found');
+        return;
+    }
+    
     stepsPool.innerHTML = '';
     
     gameState.currentSteps.forEach((step, index) => {
@@ -211,6 +277,7 @@ function renderSteps() {
     });
     
     setupDragAndDrop();
+    console.log('✅ Steps rendered:', gameState.currentSteps.length);
 }
 
 function createStepElement(step, index) {
@@ -229,26 +296,40 @@ function createStepElement(step, index) {
 }
 
 // ===================================
-// DRAG AND DROP
+// DRAG AND DROP (DESKTOP)
 // ===================================
 function setupDragAndDrop() {
     const dropZone = document.getElementById('dropZone');
     const steps = document.querySelectorAll('.step-item');
     
+    if (!dropZone) {
+        console.error('❌ Drop zone not found');
+        return;
+    }
+    
     steps.forEach(step => {
+        // Desktop drag events
         step.addEventListener('dragstart', handleDragStart);
         step.addEventListener('dragend', handleDragEnd);
+        
+        // Mobile touch events
+        step.addEventListener('touchstart', handleTouchStart, { passive: false });
+        step.addEventListener('touchmove', handleTouchMove, { passive: false });
+        step.addEventListener('touchend', handleTouchEnd, { passive: false });
     });
     
     dropZone.addEventListener('dragover', handleDragOver);
     dropZone.addEventListener('dragleave', handleDragLeave);
     dropZone.addEventListener('drop', handleDrop);
+    
+    console.log('✅ Drag & drop setup complete');
 }
 
 function handleDragStart(e) {
     gameState.draggedElement = e.target;
     e.target.classList.add('dragging');
     e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', e.target.innerHTML);
 }
 
 function handleDragEnd(e) {
@@ -271,40 +352,122 @@ function handleDrop(e) {
     dropZone.classList.remove('drag-over');
     
     if (gameState.draggedElement) {
-        // Hide placeholder
-        const placeholder = dropZone.querySelector('.drop-placeholder');
-        if (placeholder) placeholder.classList.add('hidden');
-        
-        // Clone and add to drop zone
-        const cloned = gameState.draggedElement.cloneNode(true);
-        cloned.classList.add('dropped');
-        dropZone.appendChild(cloned);
-        
-        // Remove from pool
-        gameState.draggedElement.remove();
-        
-        // Track dropped step
-        gameState.droppedSteps.push({
-            id: parseInt(gameState.draggedElement.dataset.stepId),
-            order: parseInt(gameState.draggedElement.dataset.correctOrder)
-        });
-        
-        // Enable submit if all dropped
-        if (gameState.droppedSteps.length === gameState.currentSteps.length) {
-            document.getElementById('submitBtn').disabled = false;
-        }
-        
-        // Re-setup drag for dropped items
-        setupDragForDropped();
+        addStepToDropZone(gameState.draggedElement);
     }
 }
 
-function setupDragForDropped() {
-    const droppedSteps = document.querySelectorAll('.drop-zone .step-item');
-    droppedSteps.forEach(step => {
-        step.addEventListener('dragstart', handleDragStart);
-        step.addEventListener('dragend', handleDragEnd);
+// ===================================
+// TOUCH HANDLING (MOBILE)
+// ===================================
+let touchClone = null;
+
+function handleTouchStart(e) {
+    const touch = e.touches[0];
+    gameState.touchStartX = touch.clientX;
+    gameState.touchStartY = touch.clientY;
+    gameState.draggedElement = e.currentTarget;
+    
+    // Create visual clone for dragging
+    touchClone = e.currentTarget.cloneNode(true);
+    touchClone.style.position = 'fixed';
+    touchClone.style.zIndex = '10000';
+    touchClone.style.opacity = '0.8';
+    touchClone.style.pointerEvents = 'none';
+    touchClone.style.width = e.currentTarget.offsetWidth + 'px';
+    touchClone.style.left = touch.clientX - (e.currentTarget.offsetWidth / 2) + 'px';
+    touchClone.style.top = touch.clientY - 30 + 'px';
+    document.body.appendChild(touchClone);
+    
+    e.currentTarget.style.opacity = '0.3';
+}
+
+function handleTouchMove(e) {
+    e.preventDefault();
+    
+    if (!touchClone) return;
+    
+    const touch = e.touches[0];
+    touchClone.style.left = touch.clientX - (touchClone.offsetWidth / 2) + 'px';
+    touchClone.style.top = touch.clientY - 30 + 'px';
+}
+
+function handleTouchEnd(e) {
+    if (!gameState.draggedElement) return;
+    
+    const touch = e.changedTouches[0];
+    const dropZone = document.getElementById('dropZone');
+    
+    if (dropZone) {
+        const dropRect = dropZone.getBoundingClientRect();
+        
+        // Check if touch ended inside drop zone
+        if (
+            touch.clientX >= dropRect.left &&
+            touch.clientX <= dropRect.right &&
+            touch.clientY >= dropRect.top &&
+            touch.clientY <= dropRect.bottom
+        ) {
+            addStepToDropZone(gameState.draggedElement);
+        }
+    }
+    
+    // Cleanup
+    if (touchClone) {
+        touchClone.remove();
+        touchClone = null;
+    }
+    
+    if (gameState.draggedElement) {
+        gameState.draggedElement.style.opacity = '1';
+        gameState.draggedElement = null;
+    }
+}
+
+// ===================================
+// ADD STEP TO DROP ZONE
+// ===================================
+function addStepToDropZone(stepElement) {
+    const dropZone = document.getElementById('dropZone');
+    if (!dropZone) return;
+    
+    // Hide placeholder
+    const placeholder = dropZone.querySelector('.drop-placeholder');
+    if (placeholder) {
+        placeholder.classList.add('hidden');
+    }
+    
+    // Clone and add to drop zone
+    const cloned = stepElement.cloneNode(true);
+    cloned.classList.add('dropped');
+    cloned.draggable = false;
+    dropZone.appendChild(cloned);
+    
+    // Remove from pool
+    stepElement.remove();
+    
+    // Track dropped step
+    gameState.droppedSteps.push({
+        id: parseInt(stepElement.dataset.stepId),
+        order: parseInt(stepElement.dataset.correctOrder)
     });
+    
+    // Update counter
+    updateStepCounter();
+    
+    // Enable submit if all dropped
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn && gameState.droppedSteps.length === gameState.currentSteps.length) {
+        submitBtn.disabled = false;
+    }
+    
+    console.log('✅ Step added. Progress:', gameState.droppedSteps.length, '/', gameState.currentSteps.length);
+}
+
+function updateStepCounter() {
+    const droppedCount = document.getElementById('droppedCount');
+    if (droppedCount) {
+        droppedCount.textContent = gameState.droppedSteps.length;
+    }
 }
 
 // ===================================
@@ -316,8 +479,10 @@ function startTimer() {
         const elapsed = Date.now() - gameState.startTime;
         const minutes = Math.floor(elapsed / 60000);
         const seconds = Math.floor((elapsed % 60000) / 1000);
-        document.getElementById('timer').textContent = 
-            `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        const timerEl = document.getElementById('timer');
+        if (timerEl) {
+            timerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
     }, 1000);
 }
 
@@ -332,6 +497,7 @@ function stopTimer() {
 // CHECK ANSWER
 // ===================================
 function checkAnswer() {
+    console.log('🎯 Checking answer...');
     const timeTaken = stopTimer();
     const dropZone = document.getElementById('dropZone');
     const droppedElements = Array.from(dropZone.querySelectorAll('.step-item.dropped'));
@@ -353,6 +519,8 @@ function checkAnswer() {
     const accuracy = Math.round((correctCount / correctOrder.length) * 100);
     const isPerfect = accuracy === 100;
     
+    console.log('📊 Results:', { accuracy, isPerfect, timeTaken });
+    
     // Show result
     showResult(isPerfect, accuracy, timeTaken);
     
@@ -368,37 +536,56 @@ function showResult(isPerfect, accuracy, timeTaken) {
     const reward = gameData.reward;
     
     // Show modal
-    document.getElementById('overlay').classList.add('active');
-    document.getElementById('resultModal').classList.add('active');
-    
-    // Result icon
-    const icon = document.getElementById('resultIcon');
-    icon.className = 'result-icon ' + (isPerfect ? 'success' : 'partial');
+    const resultModal = document.getElementById('resultModal');
+    if (resultModal) {
+        resultModal.classList.add('active');
+    }
     
     // Title and message
-    document.getElementById('resultTitle').textContent = isPerfect 
-        ? 'Perfect Sequence!' 
-        : accuracy >= 70 ? 'Great Effort!' : 'Keep Practicing!';
+    const resultTitle = document.getElementById('resultTitle');
+    const resultMessage = document.getElementById('resultMessage');
     
-    document.getElementById('resultMessage').textContent = isPerfect
-        ? 'You\'ve mastered this clinical protocol!'
-        : 'Review the correct sequence and try again!';
+    if (resultTitle) {
+        resultTitle.textContent = isPerfect 
+            ? 'Perfect Sequence!' 
+            : accuracy >= 70 ? 'Great Effort!' : 'Keep Practicing!';
+    }
+    
+    if (resultMessage) {
+        resultMessage.textContent = isPerfect
+            ? 'You\'ve mastered this clinical protocol!'
+            : 'Review the correct sequence and try again!';
+    }
     
     // Reward
-    document.getElementById('rewardImage').src = reward.image;
-    document.getElementById('rewardProduct').textContent = reward.product;
-    document.getElementById('rewardDiscount').textContent = reward.discount;
-    document.getElementById('couponCode').textContent = reward.code;
+    const rewardImage = document.getElementById('rewardImage');
+    const rewardProduct = document.getElementById('rewardProduct');
+    const rewardDiscount = document.getElementById('rewardDiscount');
+    const couponCode = document.getElementById('couponCode');
+    
+    if (rewardImage) rewardImage.src = reward.image;
+    if (rewardProduct) rewardProduct.textContent = reward.product;
+    if (rewardDiscount) rewardDiscount.textContent = reward.discount;
+    if (couponCode) couponCode.textContent = reward.code;
     
     // Stats
     const minutes = Math.floor(timeTaken / 60000);
     const seconds = Math.floor((timeTaken % 60000) / 1000);
-    document.getElementById('statTime').textContent = 
-        `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-    document.getElementById('statAccuracy').textContent = `${accuracy}%`;
+    const statTime = document.getElementById('statTime');
+    const statAccuracy = document.getElementById('statAccuracy');
+    
+    if (statTime) {
+        statTime.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+    if (statAccuracy) {
+        statAccuracy.textContent = `${accuracy}%`;
+    }
     
     // Educational tip
-    document.getElementById('eduTipText').textContent = gameData.tip;
+    const eduTipText = document.getElementById('eduTipText');
+    if (eduTipText) {
+        eduTipText.textContent = gameData.tip;
+    }
 }
 
 // ===================================
@@ -420,6 +607,8 @@ async function submitGameData(isPerfect, accuracy, timeTaken) {
         couponDiscount: gameData.reward.discount
     };
     
+    console.log('📤 Submitting game data:', payload);
+    
     try {
         const response = await fetch('/api/submit-game', {
             method: 'POST',
@@ -428,9 +617,9 @@ async function submitGameData(isPerfect, accuracy, timeTaken) {
         });
         
         const result = await response.json();
-        console.log('Submission result:', result);
+        console.log('✅ Submission result:', result);
     } catch (error) {
-        console.error('Submission error:', error);
+        console.error('❌ Submission error:', error);
     }
 }
 
@@ -438,24 +627,30 @@ async function submitGameData(isPerfect, accuracy, timeTaken) {
 // RESET GAME
 // ===================================
 function resetGame() {
+    console.log('🔄 Resetting game...');
+    
     // Hide result modal
-    document.getElementById('overlay').classList.remove('active');
-    document.getElementById('resultModal').classList.remove('active');
-    
-    // Clear drop zone
-    const dropZone = document.getElementById('dropZone');
-    dropZone.querySelectorAll('.step-item').forEach(el => el.remove());
-    
-    // Show placeholder
-    const placeholder = dropZone.querySelector('.drop-placeholder');
-    if (placeholder) placeholder.classList.remove('hidden');
+    const resultModal = document.getElementById('resultModal');
+    if (resultModal) {
+        resultModal.classList.remove('active');
+    }
     
     // Show specialty modal
-    document.getElementById('specialtyModal').classList.add('active');
-    document.getElementById('overlay').classList.add('active');
+    const specialtyModal = document.getElementById('specialtyModal');
+    if (specialtyModal) {
+        specialtyModal.classList.add('active');
+    }
     
     // Hide main container
-    document.getElementById('mainContainer').classList.add('hidden');
+    const mainContainer = document.getElementById('mainContainer');
+    if (mainContainer) {
+        mainContainer.classList.add('hidden');
+    }
+    
+    // Stop timer
+    if (gameState.timerInterval) {
+        clearInterval(gameState.timerInterval);
+    }
 }
 
 // ===================================
@@ -465,9 +660,46 @@ function shopNow() {
     const gameData = GAME_DATA[gameState.selectedSpecialty];
     const coupon = gameData.reward.code;
     
+    console.log('🛒 Shop now with coupon:', coupon);
+    
     // Send message to parent window (Magento iframe)
     window.parent.postMessage({
         action: 'applyCoupon',
         coupon: coupon
     }, '*');
+}
+
+// ===================================
+// COPY COUPON CODE
+// ===================================
+function copyCouponCode() {
+    const couponCode = document.getElementById('couponCode');
+    if (!couponCode) return;
+    
+    const code = couponCode.textContent;
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(code).then(() => {
+        const copyBtn = document.getElementById('copyBtn');
+        if (copyBtn) {
+            copyBtn.innerHTML = `
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+            `;
+            
+            setTimeout(() => {
+                copyBtn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                    </svg>
+                `;
+            }, 2000);
+        }
+        
+        console.log('✅ Coupon code copied:', code);
+    }).catch(err => {
+        console.error('❌ Copy failed:', err);
+    });
 }
