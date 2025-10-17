@@ -1,0 +1,14 @@
+{
+  "name": "elements-mastery-game",
+  "version": "1.0.0",
+  "description": "Elements Product Drag & Drop Gamification - PinkBlue Dental",
+  "scripts": {
+    "build": "echo 'Build complete - static site'",
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "author": "PinkBlue Dental",
+  "license": "Proprietary"
+}
