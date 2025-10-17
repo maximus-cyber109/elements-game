@@ -1568,3 +1568,269 @@ body {
 .btn-primary:hover::before {
     left: 100%;
 }
+/* ===================================
+   ENHANCED PRODUCT IMAGE
+   =================================== */
+.reward-product-img {
+    width: 180px !important;
+    height: 180px !important;
+    object-fit: contain;
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0;
+    box-shadow: none !important;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+    animation: productFloat 3s ease-in-out infinite;
+}
+
+@keyframes productFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+.reward-card-3d {
+    padding: 40px 32px !important;
+}
+
+/* ===================================
+   COMPACT LAYOUT - NO SCROLL
+   =================================== */
+.main-container {
+    padding: 16px !important;
+}
+
+.glass-header {
+    padding: 16px 24px !important;
+    margin-bottom: 16px !important;
+}
+
+.game-info-card {
+    padding: 20px !important;
+    margin-bottom: 16px !important;
+}
+
+.game-info-card .info-content h2 {
+    font-size: 18px !important;
+    margin-bottom: 4px !important;
+}
+
+.game-info-card .info-content p {
+    font-size: 14px !important;
+}
+
+.instructions-card {
+    padding: 16px !important;
+    margin-bottom: 16px !important;
+    gap: 12px !important;
+}
+
+.instruction-item {
+    min-width: 150px !important;
+}
+
+.instruction-item p {
+    font-size: 13px !important;
+}
+
+.steps-pool-card {
+    padding: 20px !important;
+    margin-bottom: 16px !important;
+}
+
+.step-item-click {
+    padding: 14px 16px !important;
+    gap: 12px !important;
+}
+
+.step-selection-number {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 16px !important;
+}
+
+.step-text-click {
+    font-size: 14px !important;
+}
+
+.submit-wrapper {
+    margin-bottom: 20px !important;
+}
+
+.submit-btn .btn-content {
+    padding: 14px 40px !important;
+    font-size: 16px !important;
+}
+
+/* ===================================
+   HAND GESTURE ANIMATIONS
+   =================================== */
+.hand-pointer {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    font-size: 48px;
+    opacity: 0;
+    animation: pointAndTap 3s ease-in-out infinite;
+}
+
+@keyframes pointAndTap {
+    0% {
+        opacity: 0;
+        transform: translate(-20px, -20px) scale(0.8);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    40% {
+        transform: translate(0, 0) scale(0.9);
+    }
+    60% {
+        transform: translate(0, 0) scale(1);
+    }
+    80% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(20px, 20px) scale(0.8);
+    }
+}
+
+.tap-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 168, 232, 0.9);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    pointer-events: none;
+    animation: tapPulse 2s ease-in-out infinite;
+    z-index: 10;
+}
+
+@keyframes tapPulse {
+    0%, 100% { 
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    50% { 
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* ===================================
+   RESULT MODAL COMPACT
+   =================================== */
+.result-modal {
+    padding: 32px 24px !important;
+}
+
+.result-animation {
+    margin-bottom: 20px !important;
+}
+
+.success-checkmark {
+    width: 90px !important;
+    height: 90px !important;
+}
+
+.success-checkmark svg {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.result-title {
+    font-size: 28px !important;
+    margin-bottom: 8px !important;
+}
+
+.result-message {
+    font-size: 14px !important;
+    margin-bottom: 24px !important;
+}
+
+.stats-grid {
+    margin-bottom: 24px !important;
+}
+
+.stat-card {
+    padding: 16px !important;
+}
+
+.stat-value {
+    font-size: 24px !important;
+}
+
+.edu-tip-card {
+    padding: 16px !important;
+    margin-bottom: 24px !important;
+}
+
+.edu-tip-card p {
+    font-size: 13px !important;
+}
+
+/* ===================================
+   SOUND CONTROL
+   =================================== */
+.sound-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    transition: all 0.3s var(--transition);
+}
+
+.sound-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-xl);
+}
+
+.sound-toggle svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+}
+
+.sound-toggle.muted {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .reward-product-img {
+        width: 140px !important;
+        height: 140px !important;
+    }
+    
+    .reward-card-3d {
+        padding: 24px 20px !important;
+    }
+    
+    .sound-toggle {
+        bottom: 16px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+    }
+}
